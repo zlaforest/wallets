@@ -1,0 +1,32 @@
+<h2 id="title2"> ~ Forum Management ~ </h2>
+<html>
+<p>
+
+</p>
+<br>
+<form>
+  Wallet name :
+  <input placeholder="yolo or not"
+         name="name" [(ngModel)]="formModel.name">
+
+  <input placeholder="limit max = 1000" type="number"
+         name="limit" [(ngModel)]="formModel.limit">
+  <br>
+  <br>
+  Enter your level :
+  <select [(ngModel)]="formModel.level" name="level">
+  <option *ngFor = "let level of levels; let i = index"> {{level}} - {{i}}</option>
+  </select>
+
+  <button (click)="createNewWallet()" [disabled]="isDisabled()">
+    Create new Wallet
+  </button>
+
+
+</form>
+<br>
+<br>
+You have chosen : <strong>{{formModel.level}}</strong>
+<br>
+<br>
+</html>

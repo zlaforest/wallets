@@ -1,0 +1,13 @@
+html{
+  background-color: aliceblue;
+}
+
+#title2{
+  font-style: italic;
+  text-align: center;
+}
+
+button{
+  background-color: #b4deff;
+  font-weight: bold;
+}

@@ -1,0 +1,15 @@
+table thead{
+  font-weight: bold;
+}
+table {
+  border: medium solid #000000;
+  width: 50%;
+}
+td, th {
+  border: thin solid yellowgreen;
+  width: 50%;
+}
+
+#col1{
+  font-weight: bold;
+}

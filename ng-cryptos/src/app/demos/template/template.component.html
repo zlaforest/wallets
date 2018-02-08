@@ -1,0 +1,48 @@
+<p>
+  template works ! Template displays the model
+</p>
+
+<p [style.color]="favoriteColor">
+  Concatenate strings {{data + ' > MORE TEXT'}}
+</p>
+
+<p [textContent]="data">
+
+</p>
+More directly :
+<p>
+  {{data}}
+</p>
+<br>
+<h3>Make Some Cool Loops</h3>
+
+<div>
+  <ul>
+    <!-- Loop in pseudo-HTML -->
+    <li *ngFor="let coin of coins">
+      {{coin.symbol}} ::: {{coin.price}}
+    </li>
+
+  </ul>
+
+</div>
+<br>
+<h3>Make Table great again</h3>
+<div>
+  <table>
+    <!-- name, symbol, price -->
+    <thead [style.color]="favoriteColor">
+    <th>Name</th>
+    <th>Symbol</th>
+    <th>Price</th>
+    </thead>
+
+    <tr *ngFor="let coin of coins">
+      <td id="col1">{{coin.name}}</td>
+      <td>{{coin.symbol}}</td>
+      <td>{{coin.price}}</td>
+    </tr>
+
+  </table>
+
+</div>

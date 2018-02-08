@@ -1,0 +1,48 @@
+html{
+  background-color: #f6ffd9;
+}
+
+button{
+  background-color: yellowgreen;
+  font-weight: bold;
+}
+
+#update{
+  background-color: gold;
+  font-weight: bold;
+}
+
+#total{
+  font-weight: bold;
+  color: #5d7f22;
+}
+
+table{
+  border: medium solid yellowgreen;
+  width: 100%;
+}
+
+#title2{
+  font-style: italic;
+  text-align: center;
+}
+
+table tr:nth-child(even){
+  border-bottom: thin solid yellowgreen;
+  border-top: thin solid yellowgreen;
+  background-color: rgba(154, 205, 50, 0.2);
+}
+
+/*table tr:nth-child(1) {
+  font-weight: bold;
+}*/
+
+thead{
+  font-weight: bold;
+  text-align: center;
+  background-color: yellowgreen;
+}
+
+table tr td td {
+  text-align: center;
+}

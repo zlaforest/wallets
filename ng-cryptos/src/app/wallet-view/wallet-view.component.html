@@ -1,0 +1,51 @@
+<h2 id="title2"> ~ Wallet  Management ~ </h2>
+
+<html>
+<div>
+  Money in my wallet : <!-- {{value().toPrecision(5)}} $ -->
+  <br>
+  <table>
+ <!-- <ul> -->
+    <thead>
+    <td>Quantity</td>
+    <td>Symbol</td>
+    <td>Value in Dollars</td>
+    </thead>
+    <tr *ngFor="let line of wallet.lines" [style.color]= "getColor(line.symbol)">
+    <td>{{line.quantity}}</td> <td>:: {{line.symbol}}</td>  <td><i>( {{line.value}} $ )</i> </td>  </tr>
+ <!-- </ul> -->
+  </table>
+  <!--{{wallet.getLinesOrderByValue()}}-->
+  <br>
+  <div id="total">  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TOTAL : $ {{wallet.totalDollarValue().toPrecision(5)}} </div>
+  <br>
+  <button id = "update" (click)="loadPrices()"> Update Prices </button>
+  <br>
+</div>
+
+<h3>Deposit or Buy</h3>
+
+<p>
+  Add Money :
+  <input type="number" #amount>
+
+  <button (click)="deposit(amount.value)"> $ Deposit </button>
+</p>
+<br>
+
+<h3>Buy other Cryptos (no $)</h3>
+<p>
+Quantity: <input type="number" #num1>
+Symbol: <input type="symbol" #symb1>
+<button (click)="buy(num1.value, symb1.value)"> Buy </button>
+</p>
+<br>
+
+<h3>Sell other Cryptos (no $)</h3>
+<p>
+  Quantity: <input type="number" #num2>
+  Symbol: <input type="symbol" #symb2>
+  <button (click)="sell(num2.value, symb2.value)"> Sell </button>
+</p>
+<br>
+</html>

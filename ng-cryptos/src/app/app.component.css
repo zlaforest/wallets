@@ -1,0 +1,16 @@
+#title{
+  background-image: url("http://www.universite-verte.u-psud.fr/wp-content/uploads/2014/03/feuille-verte.jpg");
+  border: thin solid black;
+  border-right: none;
+  border-left: none;
+}
+
+h2{
+  font-style: italic;
+  text-align: center;
+}
+
+/*html{
+  background-image: url("https://www.desktopbackground.org/download/1680x1050/2015/09/25/1016473_download-free-modern-awesome-leaf-the-wallpapers-1600x1000px_2560x1600_h.jpg");
+
+}*/
