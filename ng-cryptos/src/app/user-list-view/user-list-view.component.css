@@ -1,0 +1,43 @@
+html{
+  background-color: #ffe488;
+}
+
+button{
+  background-color: #ffa646;
+  font-weight: bold;
+}
+
+#total{
+  font-weight: bold;
+  color: #ab6f2e;
+}
+
+table{
+  border: medium solid #ffe488;
+  width: 100%;
+}
+
+#title2{
+  font-style: italic;
+  text-align: center;
+}
+
+table tr:nth-child(even){
+  border-bottom: thin solid #ffe488;
+  border-top: thin solid #ffe488;
+  background-color: rgba(255, 213, 139, 0.55);
+}
+
+/*table tr:nth-child(1) {
+  font-weight: bold;
+}*/
+
+thead{
+  font-weight: bold;
+  text-align: center;
+  background-color: #ab6f2e;
+}
+
+table tr td td {
+  text-align: center;
+}

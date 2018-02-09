@@ -23,7 +23,4 @@ public class WalletWs {
         return dao.listWallets();
     }
 
-
-
-
 }
