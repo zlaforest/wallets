@@ -3,7 +3,6 @@ package io.pax.cryptos.dao;
 import io.pax.cryptos.domain.SimpleUser;
 import io.pax.cryptos.domain.User;
 
-import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +12,18 @@ import java.util.List;
  */
 public class UserDao {
 
-    public DataSource connect() {
-        return new WalletDao().connect();
-    }
+    JdbcConnector connector = new JdbcConnector();
 
     public List<User> listUsers() throws SQLException {
         List<User> users = new ArrayList<>();
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM user");
 
         while (rs.next()) {
             String name = rs.getString("name");
             int id = rs.getInt("id");
-            //users.add(new User(id, name));
+            users.add(new SimpleUser(id, name));
             System.out.println("[id:" + id + "]\t" + name);
         }
         rs.close();
@@ -39,7 +36,7 @@ public class UserDao {
 
     public int createUser(String name) throws SQLException {
         String query = "INSERT INTO user (name) VALUES (?)";
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         stmt.setString(1, name);
@@ -63,7 +60,7 @@ public class UserDao {
         String query = "DELETE FROM user WHERE id=?";
         System.out.println(query);
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setInt(1, userId);
         stmt.executeUpdate();
@@ -76,7 +73,7 @@ public class UserDao {
     public List<User> findByName(String extract) throws SQLException {
         String query = "SELECT * FROM user WHERE name LIKE ?";
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, extract +"%");
         ResultSet rs = stmt.executeQuery();
@@ -100,7 +97,7 @@ public class UserDao {
         String query = "DELETE FROM user WHERE name=?";
         System.out.println(query);
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, exactName);
         stmt.executeUpdate();
@@ -115,7 +112,7 @@ public class UserDao {
         //System.out.println(query);
 
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement statement = conn.prepareStatement(query);
 
         statement.setInt(2, userId);

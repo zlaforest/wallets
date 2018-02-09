@@ -1,13 +1,8 @@
 package io.pax.cryptos.dao;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import io.pax.cryptos.domain.SimpleWallet;
 import io.pax.cryptos.domain.Wallet;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,31 +12,12 @@ import java.util.List;
  */
 public class WalletDao {
 
-    public DataSource connect() {
-
-        DataSource dataSource;
-
-        try { // cas du serveur
-            Context context = new InitialContext();
-            dataSource = (DataSource) context.lookup("java:/cryptos");
-
-        } catch (NamingException e) { // cas du public main void
-            MysqlDataSource mysqldataSource = new MysqlDataSource();
-            mysqldataSource.setUser("root");
-            //dataSource.setPassword("");
-            mysqldataSource.setServerName("localhost");
-            mysqldataSource.setDatabaseName("cryptos");
-            mysqldataSource.setPort(3306); //3306
-            dataSource = mysqldataSource;
-        }
-
-        return dataSource;
-    }
+    JdbcConnector connector = new JdbcConnector();
 
     public List<Wallet> listWallets() throws SQLException{
 
-        List<Wallet> wallets = new ArrayList<>();
-        Connection conn = connect().getConnection();
+         List<Wallet> wallets = new ArrayList<>();
+        Connection conn = this.connector.getConnection();
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM wallet");
 
@@ -64,7 +40,7 @@ public class WalletDao {
         String query = "INSERT INTO wallet (name, user_id) VALUES (?,?)"; //('test',2)
         System.out.println(query);
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         stmt.setInt(2, userId);
         stmt.setString(1,name);
@@ -92,7 +68,7 @@ public class WalletDao {
         String query = "DELETE FROM wallet WHERE id=?";
         System.out.println(query);
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setInt(1, walletId);
         stmt.executeUpdate();
@@ -105,7 +81,7 @@ public class WalletDao {
         String query = "DELETE FROM wallet WHERE name=?";
         System.out.println(query);
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, name);
         stmt.executeUpdate();
@@ -116,7 +92,7 @@ public class WalletDao {
       public List<Wallet> findByName(String extract) throws SQLException {
         String query = "SELECT * FROM wallet WHERE name LIKE ?";
 
-        Connection conn = connect().getConnection();
+          Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, extract +"%");
         ResultSet rs = stmt.executeQuery();
@@ -137,7 +113,7 @@ public class WalletDao {
         //System.out.println(query);
 
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement statement = conn.prepareStatement(query);
 
         statement.setInt(2,walletId);
@@ -153,7 +129,7 @@ public class WalletDao {
         String query = "DELETE FROM wallet WHERE user_id=?";
         System.out.println(query);
 
-        Connection conn = connect().getConnection();
+        Connection conn = this.connector.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setInt(1, userId);
         stmt.executeUpdate();
