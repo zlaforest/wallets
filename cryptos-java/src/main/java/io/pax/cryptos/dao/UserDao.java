@@ -1,7 +1,6 @@
 package io.pax.cryptos.dao;
 
-import io.pax.cryptos.domain.SimpleUser;
-import io.pax.cryptos.domain.User;
+import io.pax.cryptos.domain.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -122,17 +121,56 @@ public class UserDao {
         conn.close();
     }
 
+    public FullUser findUserWithWallets(int userId) throws SQLException {
+        Connection conn = this.connector.getConnection();
+        //String query = "SELECT * FROM  wallet w JOIN user u ON w.user_id = u.id";
+        String query = "SELECT * FROM wallet w JOIN user u ON w.user_id=u.id WHERE u.id =?";
+        System.out.println(query);
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setInt(1, userId);
+        ResultSet rs = stmt.executeQuery();
+
+        FullUser user = null;
+         //user = null;
+        // pro tip: always init lists
+        List<Wallet> wallets= new ArrayList<>();
+
+       while (rs.next()) {
+           String userName = rs.getString("u.name");
+           System.out.println("userName: "+userName);
+
+           user = new FullUser(userId, userName, wallets);
+           int walletId=rs.getInt("w.id");
+           String walletName = rs.getString("w.name");
+
+           if(walletId>0){
+               Wallet wallet = new SimpleWallet(walletId, walletName);
+               wallets.add(wallet);
+           }
+        }
+
+        stmt.close();
+        conn.close();
+
+        return user;
+
+
+    }
+
 
     public static void main(String[] args) throws SQLException {
         //System.out.println(new UserDao().listUsers());
-        UserDao userdao = new UserDao();
+        //UserDao userdao = new UserDao();
         //userdao.createUser("Cool_name2");
         //userdao.deleteUser(10);
 
         //List<User> users = new ArrayList<User>();
         // users = userdao.findByName("a");
         //System.out.println(users.size());
-        userdao.deleteByName("Cool_name2");
+        //userdao.deleteByName("Cool_name2");
+
+
+        System.out.println(new UserDao().findUserWithWallets(16));
 
 
 

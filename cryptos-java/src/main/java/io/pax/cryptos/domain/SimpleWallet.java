@@ -29,4 +29,9 @@ public class SimpleWallet implements Wallet{
     public Optional<User> getUser() {
         return Optional.empty();
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

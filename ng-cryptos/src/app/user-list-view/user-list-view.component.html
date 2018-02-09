@@ -2,10 +2,30 @@
 
 
 <html>
+Choose one user to see his/her wallets :
 <div>
-Users with some wallets :
+<ul id="bb">
+  <li *ngFor="let user of users">
+    <a href="#user{{user.id}}" (click)="details(user)">{{user.name}}</a>
+
+    <!--<ul *ngFor="let wallet of user.wallets">
+    {{wallet}}
+    </ul>-->
+  </li>
+</ul>
 
 </div>
+
+<div *ngIf="selectedUser">
+  <p>User details: {{selectedUser.name}}</p>
+  <ul id="fleche">
+    <li *ngFor="let wallet of selectedUser.wallets ">
+      {{wallet.name}}
+
+    </li>
+  </ul>
+</div>
+
 <br>
 <br>
 </html>

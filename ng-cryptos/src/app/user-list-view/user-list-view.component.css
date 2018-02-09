@@ -2,10 +2,14 @@ html{
   background-color: #ffe488;
 }
 
-button{
-  background-color: #ffa646;
+#bb{
   font-weight: bold;
+  color: #ab6f2e;
 }
+
+/*#fleche{
+  list-style-type: arrow;
+}*/
 
 #total{
   font-weight: bold;

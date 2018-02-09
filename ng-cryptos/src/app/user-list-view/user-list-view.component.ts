@@ -10,13 +10,26 @@ import {User} from "../model/user";
 export class UserListViewComponent implements OnInit {
 
   users: User[];
+  selectedUser:User;
+
   constructor( public dataService: DataService) {
     dataService.fetchUsers()
       .then(users=> this.users = users)
-      .then(users=> console.log(users))
+      //.then(users=> console.log(users))
   }
 
   ngOnInit() {
+  }
+
+  details(user:User){
+    this.selectedUser= user;
+    console.log('You selected ', user);
+
+    this.dataService
+      .fetchUserWithWallets(user)
+      .then(fullUser => this.selectedUser = fullUser)
+      .then(console.log); // what ?
+
   }
 
 }
