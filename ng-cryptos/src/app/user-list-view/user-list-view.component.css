@@ -2,14 +2,52 @@ html{
   background-color: #ffe488;
 }
 
-#bb{
+button{
+  background-color:#ab6f2e;
   font-weight: bold;
-  color: #ab6f2e;
+  color: black;
+  border: medium solid #ffe488;
 }
 
-/*#fleche{
-  list-style-type: arrow;
-}*/
+button:hover{
+  background-color:  yellowgreen;
+  font-weight: bold;
+  color: black;
+  border: medium solid #ab6f2e;
+}
+
+a{
+  text-decoration: none;
+  list-style-type: none;
+  //font-weight: bold;
+  color: black;
+  text-decoration: underline;
+}
+
+a li:before {
+  content: "o"; /* Insert content that looks like bullets */
+  padding-right: 1.5em;
+  color: #ab6f2e; /* Or a color you prefer */
+}
+
+h3{
+/*list-style-type: arrow;*/
+  color: black;
+  background-color: #fff6b6;
+  font-weight: bold;
+
+}
+
+#fleche{
+  //font-weight: bold;
+  color: #ab6f2e;
+  font-style: italic;
+}
+
+#identifiant{
+  color : black;
+  //font-weight: bold;
+}
 
 #total{
   font-weight: bold;

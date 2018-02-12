@@ -2,9 +2,9 @@
 
 
 <html>
-Choose one user to see his/her wallets :
+<h3> Choose one user to see his/her wallets : </h3>
 <div>
-<ul id="bb">
+<ul>
   <li *ngFor="let user of users">
     <a href="#user{{user.id}}" (click)="details(user)">{{user.name}}</a>
 
@@ -13,19 +13,37 @@ Choose one user to see his/her wallets :
     </ul>-->
   </li>
 </ul>
-
 </div>
 
+<div #addUser>
+  <form>
+    <input type="text" name = "userName" placeholder="name"
+           [(ngModel)]="createdUser.name" (click)="createdUser.name =''">
+
+    <button (click)="createUser()" [disabled]="createdUser.name?.length<5">Add a new User</button>
+  </form>
+</div>
+
+<h3>User details :</h3>
 <div *ngIf="selectedUser">
-  <p>User details: {{selectedUser.name}}</p>
-  <ul id="fleche">
-    <li *ngFor="let wallet of selectedUser.wallets ">
-      {{wallet.name}}
 
+  <p id="identifiant">{{selectedUser?.name}} :</p>
+  <ol id="fleche">
+    <li *ngFor="let wallet of selectedUser?.wallets "> {{wallet.name}}
     </li>
-  </ul>
+  </ol>
+
+<form>
+  <input type="text" name = "name" placeholder="name"
+              [(ngModel)]="createdWallet.name" (click)="createdWallet.name=''">
+
+  <button (click)="createWallet()" [disabled]="createdWallet.name?.length<5">Add a new Wallet</button>
+</form>
 </div>
 
 <br>
-<br>
+
+
+
 </html>
+

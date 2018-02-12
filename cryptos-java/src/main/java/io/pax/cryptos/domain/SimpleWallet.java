@@ -10,6 +10,10 @@ public class SimpleWallet implements Wallet{
     int id;
     String name;
 
+    // Useless constructor, but for Java EE
+    public SimpleWallet(){
+    }
+
     public SimpleWallet(int id, String name) {
         this.id = id;
         this.name = name;
@@ -34,4 +38,6 @@ public class SimpleWallet implements Wallet{
     public String toString() {
         return this.name;
     }
+
+    public void setName(String name) {this.name = name;}
 }

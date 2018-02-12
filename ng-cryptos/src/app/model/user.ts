@@ -4,6 +4,7 @@ export class User{
   name : string;
   id: number;
   wallets:Wallet[] = [];
+  //users
 
 
   // protip: always better to initiate an array

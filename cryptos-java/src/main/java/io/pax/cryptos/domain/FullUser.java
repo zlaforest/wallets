@@ -7,7 +7,11 @@ import java.util.List;
  */
 public class FullUser extends SimpleUser{
 
-    List<Wallet> wallets;
+    List<Wallet> wallets ;
+
+    public FullUser(){
+        super();
+    }
 
     public FullUser(int id, String name, List<Wallet> wallets) {
         super(id, name);
