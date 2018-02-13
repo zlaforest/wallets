@@ -8,7 +8,9 @@ import java.util.List;
 public interface User {
 
     int getId();
+    List<? extends Wallet> getWallets();
     String getName();
-    List<Wallet> getWallets();
+    //List<Wallet> getWallets();
+
 
 }
