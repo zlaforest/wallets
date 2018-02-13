@@ -1,4 +1,6 @@
-package io.pax.cryptos.domain;
+package io.pax.cryptos.domain.jdbc;
+
+import io.pax.cryptos.domain.User;
 
 import java.util.Optional;
 
