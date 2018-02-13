@@ -28,9 +28,9 @@ export class UserListViewComponent implements OnInit {
     this.selectedUser= user;
     this.createdWallet = new Wallet();
     this.createdWallet.user= user;
-    this.createdWallet.name= user.name + "'s wallet";
+    this.createdWallet.name= "in " + user.name + "'s wallet";
 
-    console.log('You selected ', user);
+    console.log('You selected ', this.selectedUser);
 
     this.dataService
       .fetchUserWithWallets(user)
@@ -43,7 +43,7 @@ export class UserListViewComponent implements OnInit {
     this.dataService.createWallet(this.createdWallet)
       .then(()=>this.selectedUser.wallets.push(
         Object.assign({}, this.createdWallet)))
-        .catch(e => alert(e));
+        .catch(e => alert(e.message));
   }
 
   createUser(){

@@ -26,13 +26,14 @@
 
 <h3>User details :</h3>
 <div *ngIf="selectedUser">
-
-  <p id="identifiant">{{selectedUser?.name}} :</p>
+  <!--{{selectedUser.name.anchor()}}-->
   <ol id="fleche">
     <li *ngFor="let wallet of selectedUser?.wallets "> {{wallet.name}}
     </li>
   </ol>
 
+</div>
+<div>
 <form>
   <input type="text" name = "name" placeholder="name"
               [(ngModel)]="createdWallet.name" (click)="createdWallet.name=''">

@@ -56,4 +56,19 @@ public class WalletWs {
 
     }
 
+    @DELETE
+    @Path("/{id}")
+    public String deleteWallet(@PathParam("id") int walletId) {
+
+        try {
+            new WalletDao().deleteWallet(walletId);
+            System.out.println(walletId);
+            return "test ok";
+        } catch (SQLException e) {
+            // Breaks POLA
+            throw new ServerErrorException("\nDatabase error, sorry\n", 500);
+        }
+
+    }
+
 }

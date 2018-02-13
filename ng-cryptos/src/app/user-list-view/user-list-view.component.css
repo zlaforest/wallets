@@ -13,7 +13,7 @@ button:hover{
   background-color:  yellowgreen;
   font-weight: bold;
   color: black;
-  border: medium solid #ab6f2e;
+  border: medium solid rgba(255, 213, 139, 0.55);
 }
 
 a{
@@ -22,6 +22,10 @@ a{
   //font-weight: bold;
   color: black;
   text-decoration: underline;
+}
+
+a:hover{
+  color:#ab6f2e;
 }
 
 a li:before {

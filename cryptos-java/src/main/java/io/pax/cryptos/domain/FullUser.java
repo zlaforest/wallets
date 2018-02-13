@@ -1,5 +1,6 @@
 package io.pax.cryptos.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  */
 public class FullUser extends SimpleUser{
 
-    List<Wallet> wallets ;
+    List<Wallet> wallets = new ArrayList<>();
 
     public FullUser(){
         super();
