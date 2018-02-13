@@ -15,7 +15,6 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
             <property name="hibernate.hbm2ddl.auto" value="validate" /> <!-- mettre create -->
 
-
         </properties>
     </persistence-unit>
 </persistence>
