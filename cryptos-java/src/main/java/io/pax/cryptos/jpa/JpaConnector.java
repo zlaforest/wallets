@@ -11,23 +11,23 @@ import javax.persistence.Persistence;
  */
 public class JpaConnector {
 
-    EntityManagerFactory factory;
+   static EntityManagerFactory factory;
+
     void connect(){
-        if(this.factory == null){
-            this.factory=  Persistence.createEntityManagerFactory("cryptos");
+        if(factory == null){
+            factory=  Persistence.createEntityManagerFactory("cryptos");
         }
     }
 
-    EntityManager createEntityManager(){
+    public EntityManager createEntityManager(){
 
         // if already connected, do nothing
         this.connect();
-
         return factory.createEntityManager();
     }
 
     public void close(){
-        this.factory.close();
+        factory.close();
     }
 
     public static void main(String[] args) {

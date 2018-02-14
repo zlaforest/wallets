@@ -19,7 +19,7 @@
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <!-- already included in server; needed for IDE/Compiler to know -->
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

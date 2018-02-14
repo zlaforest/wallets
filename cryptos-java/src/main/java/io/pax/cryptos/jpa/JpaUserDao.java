@@ -14,11 +14,11 @@ import java.util.List;
 public class JpaUserDao {
     JpaConnector connector = new JpaConnector();
 
-    public User createUser(String name){
+    public JpaUser createUser(String name){
 
         JpaUser user = new JpaUser();
         user.setName(name);
-        EntityManager em =connector.createEntityManager();
+        EntityManager em = connector.createEntityManager();
         em.getTransaction().begin();
 
 
@@ -37,7 +37,7 @@ public class JpaUserDao {
         return user;
     }
 
-    public User find(int id){
+    public JpaUser find(int id){
 
         EntityManager em =connector.createEntityManager();
         em.getTransaction().begin();
@@ -50,7 +50,7 @@ public class JpaUserDao {
         return user;
     }
 
-    public User findbyName(String name){
+    public JpaUser findbyName(String name){
 
         EntityManager em =connector.createEntityManager();
         em.getTransaction().begin();
