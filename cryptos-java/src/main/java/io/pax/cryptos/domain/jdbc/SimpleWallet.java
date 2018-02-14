@@ -1,8 +1,10 @@
 package io.pax.cryptos.domain.jdbc;
 
+import io.pax.cryptos.domain.Line;
 import io.pax.cryptos.domain.User;
 import io.pax.cryptos.domain.Wallet;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -38,9 +40,16 @@ public class SimpleWallet implements Wallet {
     }
 
     @Override
+    public List<? extends Line> getLines() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return this.name;
     }
 
     public void setName(String name) {this.name = name;}
+
+
 }

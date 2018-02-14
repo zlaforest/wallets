@@ -1,5 +1,6 @@
 package io.pax.cryptos.domain;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -13,5 +14,6 @@ public interface Wallet {
     default Optional<User> getUser(){
         return null;
     }
+    List<? extends Line> getLines();
 
 }
