@@ -32,17 +32,17 @@ public class JpaLineDao {
         lineBtc.setWallet(wallet);
         em.persist(lineBtc);
 
-        JpaLine lineXrm = new JpaLine();
-        lineXrm.setQuantity(1045);
-        lineXrm.setSymbol("XRM");
-        lineXrm.setWallet(wallet);
-        em.persist(lineXrm);
+        JpaLine lineXmr = new JpaLine();
+        lineXmr.setQuantity(1045);
+        lineXmr.setSymbol("XMR");
+        lineXmr.setWallet(wallet);
+        em.persist(lineXmr);
 
         //commit & close
         em.getTransaction().commit();
         em.close();
         dao.connector.close();
-        System.out.println(lineXrm.getWallet());
+        System.out.println(lineXmr.getWallet().toString());
     }
 
 }

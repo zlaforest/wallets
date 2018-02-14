@@ -39,7 +39,10 @@
               [(ngModel)]="createdWallet.name" (click)="createdWallet.name=''">
 
   <button (click)="createWallet()" [disabled]="createdWallet.name?.length<5">Add a new Wallet</button>
+  <button id="deleteW" (click)="deleteWallet()" [disabled]="deletedWallet.name?.length<5">Delete a Wallet</button>
+
 </form>
+
 </div>
 
 <br>

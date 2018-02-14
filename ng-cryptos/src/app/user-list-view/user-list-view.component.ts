@@ -14,6 +14,7 @@ export class UserListViewComponent implements OnInit {
   selectedUser:User;
   createdWallet:Wallet = new Wallet();
   createdUser:User = new User();
+  deletedWallet:Wallet = new Wallet();
 
   constructor( public dataService: DataService) {
     dataService.fetchUsers()
@@ -51,5 +52,9 @@ export class UserListViewComponent implements OnInit {
       .then(()=>this.users.push(
         Object.assign({}, this.createdUser)))
       .catch(e => alert(e));
+  }
+
+  deleteWallet(){
+
   }
 }

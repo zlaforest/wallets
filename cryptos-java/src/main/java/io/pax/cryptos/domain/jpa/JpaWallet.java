@@ -33,6 +33,9 @@ public class JpaWallet implements Wallet{
         this.name = name;
     }
 
+    @Override
+    public String toString(){ return this.getUser() + "" +this.getName();}
+
    /* @Override
     public Optional<User> getUser() {
         return null;

@@ -9,6 +9,13 @@ button{
   border: medium solid #ffe488;
 }
 
+#deleteW:hover{
+  background-color: #cd482f;
+  font-weight: bold;
+  color: black;
+  border: medium solid rgba(255, 213, 139, 0.55);
+}
+
 button:hover{
   background-color:  yellowgreen;
   font-weight: bold;
