@@ -1,10 +1,11 @@
 package io.pax.cryptos.ws;
 
 import io.pax.cryptos.dao.WalletDao;
-import io.pax.cryptos.domain.jdbc.FullWallet;
-import io.pax.cryptos.domain.jdbc.SimpleUser;
 import io.pax.cryptos.domain.User;
 import io.pax.cryptos.domain.Wallet;
+import io.pax.cryptos.domain.jdbc.FullWallet;
+import io.pax.cryptos.domain.jdbc.SimpleUser;
+import io.pax.cryptos.jpa.JpaWalletDao;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -21,9 +22,16 @@ import java.util.Optional;
 public class WalletWs {
 
     @GET
-    public List<Wallet> getWallet() throws SQLException {
+    public List<Wallet> getWallets() throws SQLException{
         WalletDao dao = new WalletDao();
         return dao.listWallets();
+
+    }
+
+    @Path("{id}")
+    public Wallet getWallet(@PathParam("id") int walletId){
+
+        return new JpaWalletDao().getWallet(walletId);
     }
 
     // JaxRS annotations
@@ -56,7 +64,9 @@ public class WalletWs {
 
     }
 
-    @DELETE
+
+
+   /* @DELETE
     @Path("/{id}")
     public String deleteWallet(@PathParam("id") int walletId) {
 
@@ -69,6 +79,6 @@ public class WalletWs {
             throw new ServerErrorException("\nDatabase error, sorry\n", 500);
         }
 
-    }
+    }*/
 
 }
