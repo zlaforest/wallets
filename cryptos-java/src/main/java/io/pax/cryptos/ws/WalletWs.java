@@ -6,8 +6,10 @@ import io.pax.cryptos.domain.User;
 import io.pax.cryptos.domain.Wallet;
 import io.pax.cryptos.domain.jdbc.FullWallet;
 import io.pax.cryptos.domain.jdbc.SimpleUser;
+import io.pax.cryptos.domain.jpa.JpaWallet;
 
 import javax.ejb.EJB;
+import javax.naming.NamingException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
@@ -26,7 +28,7 @@ public class WalletWs {
     WalletBusiness walletBusiness;
 
     @GET
-    public List<Wallet> getWallets() throws SQLException{
+    public List<Wallet> getWallets() throws SQLException, NamingException{
         WalletDao dao = new WalletDao();
         return dao.listWallets();
 
@@ -36,8 +38,11 @@ public class WalletWs {
     @Path("{id}")
     public Wallet getWallet(@PathParam("id") int walletId) {
 
+       JpaWallet wallet = walletBusiness.findWallet(walletId);
         //return new JpaWalletDao().getWallet(walletId);
-        return walletBusiness.findWallet(walletId);
+        wallet.getLines().stream().forEach(jpaLine -> jpaLine.setWallet(null));
+
+        return wallet;
     }
 
     // JaxRS annotations
